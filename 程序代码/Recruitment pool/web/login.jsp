@@ -1,4 +1,5 @@
-<!DOCTYPE HTML>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
 		<title>招聘信息管理系统</title>
@@ -22,20 +23,28 @@
 		<script src="js/custom.js"></script>
 		<link href="css/custom.css" rel="stylesheet">
 	</head>
+
+    <%
+        String errorInfo = "";
+        if (request.getAttribute("errorInfo") != null) {
+            errorInfo = (String) request.getAttribute("errorInfo");
+        }
+    %>
+
 	<body class="cbp-spmenu-push">
 		<div class="main-content">
             <div class=" sidebar" role="navigation">
                 <div class="navbar-collapse">
                     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                         <ul class="nav" id="side-menu">
-                            <li>
-                                <a href="index.html" class="active"><i class="fa fa-home nav_icon"></i>监视面板</a>
+                            <li onclick="alert('请先登陆！')">
+                                <a href="#" class="active"><i class="fa fa-home nav_icon"></i>监视面板</a>
                             </li>
-                            <li>
+                            <li onclick="alert('请先登陆！')">
                                 <a href="#"><i class="fa fa-cogs nav_icon"></i>操作控制  <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
-                                    <li>
-                                        <a href="grids.html">添加招聘方信息</a>
+                                    <li onclick="alert('请先登陆！')">
+                                        <a href="#">添加招聘方信息</a>
                                     </li>
                                 </ul>
                             </li>
@@ -48,21 +57,12 @@
 				<div class="header-left">
 					<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 					<div class="logo">
-						<a href="index.html">
+						<a href="index.jsp">
 							<h1>招聘信息管理系统</h1>
 							<span>leafspace</span>
 						</a>
 					</div>
-					<div class="search-box">
-						<form class="input">
-							<input class="sb-search-input input__field--madoka" placeholder="查找..." type="search" id="input-31" />
-							<label class="input__label" for="input-31">
-								<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-									<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
-								</svg>
-							</label>
-						</form>
-					</div>
+
 					<div class="clearfix"> </div>
 				</div>
 				<div class="header-right"></div>
@@ -77,9 +77,10 @@
 							<h4>欢迎来到管理系统 ! <br> 没有账号? <a href="signup.html">  注 册 »</a> </h4>
 						</div>
 						<div class="login-body">
-							<form>
+							<form action="login.do" method="post">
 								<input type="text" class="user" name="username" placeholder="输入你的用户名..." required="">
 								<input type="password" name="password" class="lock" placeholder="请输入密码...">
+                                <span style="color: #FF0000;"><%=errorInfo%></span>
 								<input type="submit" name="button" value="登陆">
 								<div class="forgot-grid">
 									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>记住 我</label>

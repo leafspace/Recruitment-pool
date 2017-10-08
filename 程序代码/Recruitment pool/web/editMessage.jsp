@@ -1,4 +1,6 @@
-<!DOCTYPE HTML>
+<%@ page import="cn.leafspace.ToolBean.User" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
         <title>招聘信息管理系统</title>
@@ -22,6 +24,14 @@
         <script src="js/custom.js"></script>
         <link href="css/custom.css" rel="stylesheet">
     </head>
+
+    <%
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            request.getRequestDispatcher("login.jsp").forward(request,response);
+        }
+    %>
+
     <body class="cbp-spmenu-push">
         <div class="main-content">
             <div class=" sidebar" role="navigation">
@@ -29,13 +39,13 @@
                     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="index.html" class="active"><i class="fa fa-home nav_icon"></i>监视面板</a>
+                                <a href="index.jsp" class="active"><i class="fa fa-home nav_icon"></i>监视面板</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-cogs nav_icon"></i>操作控制  <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li>
-                                        <a href="grids.html">添加招聘方信息</a>
+                                        <a href="editMessage.jsp">添加招聘方信息</a>
                                     </li>
                                 </ul>
                             </li>
@@ -48,21 +58,12 @@
                 <div class="header-left">
                     <button id="showLeftPush"><i class="fa fa-bars"></i></button>
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="index.jsp">
                             <h1>招聘信息管理系统</h1>
                             <span>leafspace</span>
                         </a>
                     </div>
-                    <div class="search-box">
-                        <form class="input">
-                            <input class="sb-search-input input__field--madoka" placeholder="查找..." type="search" id="input-31" />
-                            <label class="input__label" for="input-31">
-                                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
-                                </svg>
-                            </label>
-                        </form>
-                    </div>
+
                     <div class="clearfix"> </div>
                 </div>
                 <div class="header-right">
@@ -73,8 +74,8 @@
                                     <div class="profile_img">
                                         <span class="prfil-img"><img src="images/a.png" alt=""> </span>
                                         <div class="user-name">
-                                            <p>Wikolia</p>
-                                            <span>Administrator</span>
+                                            <p><%=user.getUsername()%></p>
+                                            <span>管理员</span>
                                         </div>
                                         <i class="fa fa-angle-down lnr"></i>
                                         <i class="fa fa-angle-up lnr"></i>
@@ -82,9 +83,9 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu drp-mnu">
-                                    <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                                    <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-                                    <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    <li> <a href="#"><i class="fa fa-cog"></i> 设置</a> </li>
+                                    <li> <a href="#"><i class="fa fa-user"></i> 简述</a> </li>
+                                    <li> <a href="#"><i class="fa fa-sign-out"></i> 注销</a> </li>
                                 </ul>
                             </li>
                         </ul>
@@ -105,16 +106,16 @@
                                 <div class="alert alert-info">
                                     添加新的招聘信息到管理信息系统
                                 </div>
-                                <form class="com-mail">
-                                    <input type="text" class="form-control1 control3" placeholder="公司名称 :">
-                                    <input type="text" class="form-control1 control3" placeholder="公司地址 :">
+                                <form class="com-mail" action="editMessage.do" method="post">
+                                    <input type="text" name="companyName" class="form-control1 control3" placeholder="公司名称 :">
+                                    <input type="text" name="companyAddress" class="form-control1 control3" placeholder="公司地址 :">
                                     <div style="width: 100%">
-                                        <input type="text" class="form-control1 control3" style="width: 75%; float: left;" placeholder="投递职位 :">
-                                        <input type="text" class="form-control1 control3" style="width: 20%; float: right" placeholder="薪水范围 :">
+                                        <input type="text" name="companyJobs" class="form-control1 control3" style="width: 75%; float: left;" placeholder="投递职位 :">
+                                        <input type="text" name="companySalary" class="form-control1 control3" style="width: 20%; float: right" placeholder="薪水范围 :">
                                     </div>
-                                    <textarea rows="6" class="form-control1 control2" placeholder="工作条件 :"></textarea>
-                                    <textarea rows="6" class="form-control1 control2" placeholder="岗位职责 :"></textarea>
-                                    <textarea rows="6" class="form-control1 control2" placeholder="公司福利 :"></textarea>
+                                    <textarea rows="6" name="companyCondition" class="form-control1 control2" style="margin-bottom: 15px;" placeholder="工作条件 :"></textarea>
+                                    <textarea rows="6" name="companyWork" class="form-control1 control2" style="margin-bottom: 15px;" placeholder="岗位职责 :"></textarea>
+                                    <textarea rows="6" name="companyWelfare" class="form-control1 control2" style="margin-bottom: 15px;" placeholder="公司福利 :"></textarea>
                                     <input type="submit" value="添加信息" />
                                 </form>
                             </div>
