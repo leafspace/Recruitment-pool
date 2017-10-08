@@ -1,17 +1,16 @@
-<%@ page import="cn.leafspace.ToolBean.User" %>
-<%@ page import="cn.leafspace.Database.Factory.DatabaseProxyFactory" %>
-<%@ page import="cn.leafspace.ToolBean.CompanyInformation" %>
-<%@ page import="cn.leafspace.Database.Interface.DatabaseProxyInterface" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="cn.leafspace.ToolBean.User" %>
+<%@ page import="cn.leafspace.ToolBean.CompanyInformation" %>
+<%@ page import="cn.leafspace.Database.Factory.DatabaseProxyFactory" %>
+<%@ page import="cn.leafspace.Database.Interface.DatabaseProxyInterface" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
         <title>招聘信息管理系统</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-                SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -159,17 +158,17 @@
                                                 <td data-container="body" data-toggle="popover"
                                                     data-placement="bottom" data-content="<%=companyInformations.get(i).getCompanyCondition()%>"
                                                     data-original-title="" title="" aria-describedby="popover475398">
-                                                    <%=companyCondition.substring(0, Math.min(10, companyCondition.length()))%>...
+                                                    <%=companyCondition.substring(0, Math.min(30, companyCondition.length()))%>...
                                                 </td>
                                                 <td data-container="body" data-toggle="popover"
                                                     data-placement="bottom" data-content="<%=companyInformations.get(i).getCompanyWork()%>"
                                                     data-original-title="" title="" aria-describedby="popover475398">
-                                                    <%=companyWork.substring(0, Math.min(10, companyWork.length()))%>...
+                                                    <%=companyWork.substring(0, Math.min(30, companyWork.length()))%>...
                                                 </td>
                                                 <td data-container="body" data-toggle="popover"
                                                     data-placement="bottom" data-content="<%=companyInformations.get(i).getCompanyWelfare()%>"
                                                     data-original-title="" title="" aria-describedby="popover475398">
-                                                    <%=companyWelfare.substring(0, Math.min(10, companyWelfare.length()))%>...
+                                                    <%=companyWelfare.substring(0, Math.min(30, companyWelfare.length()))%>...
                                                 </td>
                                             </tr>
                                             </tbody>

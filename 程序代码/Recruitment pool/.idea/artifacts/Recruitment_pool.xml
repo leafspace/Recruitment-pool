@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Recruitment pool:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Recruitment_pool_war_exploded</output-path>
+  <artifact type="exploded-war" name="Recruitment pool">
+    <output-path>$PROJECT_DIR$/out/artifacts/Recruitment_pool</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Recruitment pool/web/Web" />
       <element id="directory" name="WEB-INF">
